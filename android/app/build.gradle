@@ -1,0 +1,44 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "com.google.gms.google-services" // FlutterFire Configuration
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.hediety_project"
+    compileSdk = 34 // Ensure this is set to the correct compile SDK version
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+
+    defaultConfig {
+        applicationId = "com.example.hediety_project"
+        minSdk = 23 // Set minimum SDK to align with your app's requirements
+        targetSdk = 34 // Align with the compile SDK version
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+        multiDexEnabled true // Enable multidex for apps with many dependencies
+    }
+
+    buildTypes {
+        release {
+            // Use a proper signing configuration for release builds
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+flutter {
+    source = "../.."
+}
+
+// Ensure this line is added to apply the google-services plugin
+apply plugin: 'com.google.gms.google-services'
